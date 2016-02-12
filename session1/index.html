@@ -40,77 +40,45 @@
 			<div class="slides">
 				<section>
 					<h1>Node.js Workshop</h1>
-					<h3>Session 1 - 12/01/2016</h3>
+					<h3>Session 1 - 19/01/2016</h3>
 				</section>
 
+				<!-- Section: What is Node.js? -->
 				<section>
-					<h2>Technologies</h2>
-					<ul>
-						<li>
-							Node.js
-						</li>
-						<li>
-							MongoDB
-						</li>
-						<li>
-							WebSockets
-						</li>
-						<li>
-							RESTful APIs
-						</li>
-						<li>
-							Webhooks
-						</li>
-					</ul>
-				</section>
+					<section>
+						<h2>What is Node.js?</h2>
+						<p>
+							<blockquote cite="https://nodejs.org/en/">
+								Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+							</blockquote>
+						</p>
+					</section>
 
-				<section>
-					<h2>Libraries</h2>
-					<ul>
-						<li>
-							Express: Web server framework
-						</li>
-						<li>
-							Mongoose: Models and DB interface
-						</li>
-						<li>
-							Socket.io: Websocket handling
-						</li>
-					</ul>
-				</section>
+					<section>
+						<h2>What is Node.js?</h2>
+						<h3>Asynchronous and Event Driven</h3>
+						<p>
+							All APIs of Node.js library are asynchronous that is, non-blocking. <strong>There is no sleep on Node</strong>.<br />
+							<img width="50%" src="img/event-loop.png" title="Node processing model" />
+						</p>
+					</section>
 
-				<section>
-					<h2>What is Node.js?</h2>
-					<p>
-						<blockquote cite="https://nodejs.org/en/">
-							Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
-						</blockquote>
-					</p>
-				</section>
-
-				<section>
-					<h2>What is Node.js?</h2>
-					<h3>Asynchronous and Event Driven</h3>
-					<p>
-						All APIs of Node.js library are asynchronous that is, non-blocking. <strong>There is no sleep on Node</strong>.<br />
-						<img width="50%" src="img/event-loop.png" title="Node processing model" />
-					</p>
-				</section>
-				<section>
-					<h2>What is Node.js?</h2>
-					<h3>Very Fast</h3>
-					<p>
-						Being built on Google Chrome's V8 JavaScript Engine, Node.js library is very fast in code execution.<br />
-						<img src="img/nodejs-vs-php-perf.png" alt="Node vs PHP" />
-					</p>
-				</section>
-				<section>
-					<h2>What is Node.js?</h2>
-					<h3>Single Threaded but Highly Scalable</h3>
-					<p>
-						Node.js uses a single threaded model with event looping.<br/>
-						<img src="img/single-thread.png" title="Single thread example" />
-					</p>
+					<section>
+						<h2>What is Node.js?</h2>
+						<h3>Very Fast</h3>
+						<p>
+							Being built on Google Chrome's V8 JavaScript Engine, Node.js library is very fast in code execution.<br />
+							<img src="img/nodejs-vs-php-perf.png" alt="Node vs PHP" />
+						</p>
+					</section>
+					<section>
+						<h2>What is Node.js?</h2>
+						<h3>Single Threaded but Highly Scalable</h3>
+						<p>
+							Node.js uses a single threaded model with event looping.<br/>
+							<img src="img/single-thread.png" title="Single thread example" />
+						</p>
+					</section>
 				</section>
 
 				<section>
@@ -118,41 +86,63 @@
 					<iframe src='//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1rt8Xqpno-s7oNFCEKMYHoJexw24DIUcSkTABx2avcV8&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' frameborder='0'></iframe>
 				</section>
 
+				<!-- Section: Getting ready -->
+			<section>
 				<section>
 					<h2>Getting ready</h2>
-					<h3>NVM</h3>
 					<p>
 						Sometimes getting and switching between different Node.js versions can be a pain, <strong>NVM</strong> (Node Version Manager) solves that.
 					</p>
-					<p>Install nvm (<a href="https://github.com/creationix/nvm">https://github.com/creationix/nvm</a>)</p>
+					<p>Install nvm (<a target="_blank" href="https://github.com/creationix/nvm">https://github.com/creationix/nvm</a>)</p>
 					<pre><code class="hljs sh" data-trim contenteditable>
 						$ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
 					</code></pre>
 					<br />
-					<small>If you're on Windows you may want to follow this: <a href="https://github.com/coreybutler/nvm-windows">https://github.com/coreybutler/nvm-windows</a></small>
+					<small>If you're on Windows you may want to follow this: <a target="_blank" href="https://github.com/coreybutler/nvm-windows">https://github.com/coreybutler/nvm-windows</a></small>
 				</section>
 
 				<section>
 					<h2>Getting ready</h2>
 					<p>We're going to use the latest stable release of Node.js and set it as default:</p>
-					<pre><code class="hljs sh" data-trim contenteditable>
+<pre><code class="hljs sh" data-trim contenteditable>
 $ nvm install stable
 ...
 $ nvm alias default stable
 $ nvm use default
 $ node -v
 v5.6.0
-					</code></pre>
+</code></pre>
 
 					<small>Note: Node always comes with <strong>npm</strong> (Node Package Manager).</small>
 				</section>
 
 				<section>
+					<h2>Getting ready</h2>
+					<p>Node is a REPL interactive shell by default:</p>
+<pre><code class="hljs sh" data-trim contenteditable>
+$ node
+> var a = [1, 2, 3];
+undefined
+> a[1]
+2
+> var fs = require('fs');
+undefined
+> fs.readdir('.', (err, files) => console.log(files));
+undefined
+> [ 'app.js', 'node_modules', 'package.json' ]
+</code></pre>
+					<small>Note: Press cntrl+C to exit the shell</small>
+				</section>
+			</section>
+
+			<!-- Section: Starting up -->
+			<section>
+				<section>
 					<h2>Starting up</h2>
 					<p>
 						Lets start by creating the project folder and initializing it.
 					</p>
-					<pre><code class="hljs sh" data-trim contenteditable>
+<pre><code class="hljs sh" data-trim contenteditable>
 $ mkdir nodejs-project
 $ cd nodejs-project
 $ npm init
@@ -163,7 +153,7 @@ entry point: (index.js) app.js
 test command:
 git repository:
 keywords:
-author: Your name <your@email.com>
+author: Your name &lt;your@email.com&gt;
 license: (ISC)
 About to write to /nodejs-project/package.json:
 {
@@ -178,27 +168,381 @@ About to write to /nodejs-project/package.json:
   "license": "ISC"
 }
 Is this ok? (yes) yes
-					</code></pre>
+</code></pre>
 				</section>
+
 				<section>
 					<h2>Starting up</h2>
 					<p>
 						Let's add some of the dependencies we'll be using:
-						<pre><code class="hljs sh" data-trim contenteditable>
+<pre><code class="hljs sh" data-trim contenteditable>
 $ npm install express --save
 $ npm install nodemon --save-dev
-						</code></pre>
+</code></pre>
 						<br />
 						<small>Now check your package.json</small>
 					</p>
 				</section>
+
+			</section>
+
+			<!-- Section: Exercise 1 -->
+			<section>
 				<section>
-					<h2>Starting up</h2>
-					<p>
-						Lets create the folder structure.
-					</p>
+					<h2>Exercise 1: Promises</h2>
+					<blockquote>
+						The <strong>Promise</strong> object is used for deferred and asynchronous computations. A Promise represents an operation that hasn't completed yet, but is expected in the future.
+					</blockquote>
 				</section>
 
+				<section>
+					<h2>Exercise 1: Promises</h2>
+					<p>
+						What problem does it solve? The single-threaded, non blocking part.
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//app.js
+'use strict';
+
+const asyncStuff = () => {
+	let value = null;
+	setTimeout(() => { value = `I'm done!` }, 100);
+	return value;
+};
+
+console.log(asyncStuff());
+//null
+</code></pre>
+					<smal>Run it like this: <pre><code class="hljs sh" data-trim contenteditable>node app.js</code></pre></smal>
+				</section>
+
+				<section>
+					<h2>Exercise 1: Promises</h2>
+					<p>
+						The christmas tree of callbacks (we don't want that!)
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+asyncStuff1(function(err, result) {
+  asyncStuff2(function(err, result) {
+    asyncStuff3(function(err, result) {
+      asyncStuff4(function(err, result) {
+        asyncStuff5(function(err, result) {
+          // do something useful
+        })
+      })
+    })
+  })
+})
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Exercise 1: Promises</h2>
+					<p>
+						F*c$ callbacks, use Promises!
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+'use strict';
+
+const asyncStuff = () => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve(`I'm done!`);
+		}, 100);
+	});
+};
+
+asyncStuff()
+.then((result) => console.log(result));
+//I'm done!
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Exercise 1: Promises</h2>
+					<p>
+						You can chain them!
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+...
+const asyncStuff2 = (response1) => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			resolve(`${response1} Twice!`);
+		}, 100);
+	});
+};
+
+asyncStuff()
+.then(asyncStuff2)
+.then((result) => console.log(result));
+//I'm done! Twice!
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Exercise 1: Promises</h2>
+					<p>
+						Catch the rejections!
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+...
+const asyncStuff2 = (response1) => {
+	return new Promise((resolve, reject) => {
+		setTimeout(() => {
+			reject(new Error('Something went wrong'));
+		}, 100);
+	});
+};
+
+asyncStuff()
+.then(asyncStuff2)
+.then((result) => console.log(result))
+.catch((error) => console.error('Promise failed', error));
+//Promise failed [Error: Something went wrong]
+</code></pre>
+				</section>
+			</section>
+
+			<!--- Section: Exercise 2 -->
+			<section>
+				<section>
+					<h2>Exercise 2: NPM scripts</h2>
+					<p>
+						You can automate, build and do lots of things with <strong>npm scripts</strong>. Most of the time you don't need grunt or gulp.<br />
+						<code>start</code> and <code>test</code> are supported out of the box, otherwise you need to run <code>npm run-script [scriptname]</code>.
+					</p>
+<pre><code class="hljs json" data-trim contenteditable>
+//package.json
+...
+"scripts": {
+	"start": "nodemon -e js -w ./ ./app.js"
+}
+...
+</code></pre>
+					<smal>Now run: <pre><code class="hljs sh" data-trim contenteditable>npm start</code></pre></smal>
+				</section>
+
+				<section>
+					<h2>Exercise 2: NPM scripts</h2>
+					<p>
+						You can use <strong>script hooks</strong> to execute things before and after your scripts
+					</p>
+<pre><code class="hljs json" data-trim contenteditable>
+//package.json
+...
+"scripts": {
+  "start": "nodemon -e js -w ./ ./app.js",
+  "prestart": "echo '---- Watching app.js file ----'"
+}
+...
+</code></pre>
+					<smal>Now run: <pre><code class="hljs sh" data-trim contenteditable>npm start</code></pre></smal>
+					<small>Learn more about script hooks <a href="http://www.marcusoft.net/2015/08/pre-and-post-hooks-for-npm-scripting.html" target="_blank">here</a></small><br/>
+					<small>Note: One of the most useful hooks is the <strong>postinstall</strong> one.</small>
+				</section>
+			</section>
+
+			<!-- Section: Execise 3 -->
+			<section>
+				<section>
+					<h2>Exercise 3: CommonJS modules</h2>
+					<p>
+						One of the big advantages of Node.js is that everything can be a module.
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//config/env/development.js
+module.exports = {
+	PORT: 8000
+};
+</code></pre>
+<pre><code class="hljs js" data-trim contenteditable>
+//config/index.js
+'use strict';
+
+module.exports = (() => {
+  const env = process.env.NODE_ENV || 'development';
+
+  console.info( 'Environment: ' + env );
+
+  try {
+    return require('./env/' + env );
+  } catch (ex) {
+    console.error('Environment not recognised, exiting');
+    process.exit(1);
+  }
+})();
+</code></pre>
+					<small>Find other ways to use "export" <a target="_blank" href="https://nodejs.org/docs/latest/api/modules.html">here</a></small>
+				</section>
+
+				<section>
+					<h2>Exercise 3: CommonJS modules</h2>
+					<p>
+						You can get a local module using require with a relative path.
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//app.js
+'use strict';
+
+const config = require('./config');
+
+console.log(config);
+</code></pre>
+					<small>Run it with <pre><code class="hljs sh" data-trim contenteditable>node app.js</code></pre></small><br />
+					<small>What happens if you set the env variable? <pre><code class="hljs sh" data-trim contenteditable>export NODE_ENV=production && node app.js</code></pre></small>
+				</section>
+			</section>
+
+			<!-- Section: Let's create a server! -->
+			<section>
+				<section>
+					<h2>Let's create a server!</h2>
+					<p>
+						Creating a server is very easy using Express.
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//app.js
+'use strict';
+
+const config  = require('./config'),
+      express = require('express'),
+      app     = express();
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(config.PORT, () => {
+  console.log(`Server listening on localhost:${config.PORT}`);
+});
+//Server listening on localhost:3000
+</code></pre>
+					<small>Go check it out! <a target="_blank" href="http://localhost:3000/">http://localhost:3000/</a></small>
+				</section>
+
+				<section>
+					<h2>Let's create a WEB server!</h2>
+					<p>
+						Let's begin with creating some folders and empty files
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+.
+├── app.js
+├── config
+│   ├── env
+│   │   └── development.js
+│   └── index.js
+├── package.json
+├── public
+│   ├── css
+│   │   └── main.css
+│   ├── img
+│   └── js
+│       └── main.js
+└── views
+    └── index.ejs
+</code></pre>
+				</section>
+				<section>
+					<h2>Let's create a WEB server!</h2>
+					<p>
+						We'll be using <a href="https://www.npmjs.com/package/ejs" target="_blank">EJS</a> for the view templates, but we could use <a href="https://www.npmjs.com/package/mustache" target="_blank">Moustache</a>, <a href="http://jade-lang.com/" target="_blank">Jade</a>, etc.
+					</p>
+<pre><code class="hljs sh" data-trim contenteditable>
+$ npm i ejs --save
+</code></pre>
+<pre><code class="hljs html" data-trim contenteditable>
+//views/index.ejs
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+		&lt;meta charset=&quot;utf-8&quot;&gt; &lt;title&gt;My Project&lt;/title&gt;
+		&lt;link rel=&quot;stylesheet&quot; href=&quot;/css/main.css&quot; media=&quot;screen&quot; title=&quot;no title&quot; charset=&quot;utf-8&quot;&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+		&lt;h1&gt;&lt;%=message%&gt;&lt;/h1&gt;
+		&lt;script src=&quot;/js/main.js&quot; charset=&quot;utf-8&quot;&gt;&lt;/script&gt;
+	&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Let's create a WEB server!</h2>
+					<p>
+						Now lets make our server serve static content and render views.
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//app.js
+...
+
+app.use(express.static('public'));
+
+app.set('view engine', 'ejs');
+
+app.get('/', (req, res) => {
+  res.render('index', {message: 'Hello World'});
+});
+
+app.listen(config.PORT, () => {
+  console.log(`Server listening on localhost:${config.PORT}`);
+});
+</code></pre>
+					<small>Go check it out! <a target="_blank" href="http://localhost:3000/">http://localhost:3000/</a></small>
+				</section>
+
+				<section>
+					<h2>Let's create a WEB server!</h2>
+					<p>
+						We could also create partials to use in different pages.
+					</p>
+<pre><code class="hljs sh" data-trim contenteditable>
+views
+├── index.ejs
+└── partials
+    ├── footer.ejs
+    └── header.ejs
+</code></pre>
+<pre><code class="hljs html" data-trim contenteditable>
+//views/index.ejs
+&lt;%- include('partials/header') -%&gt;
+	&lt;h1&gt;&lt;%=message%&gt;&lt;/h1&gt;
+&lt;%- include('partials/footer') -%&gt;
+</code></pre>
+				</section>
+			</section>
+
+
+				<section>
+					<h2>What we learned today</h2>
+					<ul>
+						<li>
+							Node.js: What is it, how it works, how to use it.
+						</li>
+						<li>
+							Promises: When and how to use them.
+						</li>
+						<li>
+							NPM: How to install packages and run scripts.
+						</li>
+						<li>
+							CommonJS: How to define modules.
+						</li>
+						<li>
+							Express: How to create a web server and render with EJS.
+						</li>
+					</ul>
+				</section>
+
+
+				<section>
+					<h1>Thank you!</h1>
+					<p>
+						Check the repo <a href="https://github.com/martip-sainsburys/nodejs-workshop" target="_blank">https://github.com/martip-sainsburys/nodejs-workshop</a>
+						and PR the README.md file to add the topics you want to have covered!
+					</p>
+				</section>
 
 			</div>
 
@@ -224,7 +568,7 @@ $ npm install nodemon --save-dev
 					{ src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
 					{ src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
 					{ src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.configure({tabReplace: '  '}); hljs.initHighlightingOnLoad(); } },
 					{ src: '../plugin/zoom-js/zoom.js', async: true },
 					{ src: '../plugin/notes/notes.js', async: true }
 				]
