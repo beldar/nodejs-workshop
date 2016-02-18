@@ -4,10 +4,10 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>reveal.js – The HTML Presentation Framework</title>
+		<title>Node.js Workshop - Sainsbury's</title>
 
-		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
-		<meta name="author" content="Hakim El Hattab">
+		<meta name="description" content="Slides used on the Node.js Workshop">
+		<meta name="author" content="Marti Planellas">
 
 		<meta name="apple-mobile-web-app-capable" content="yes">
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -45,40 +45,39 @@
 
 				<!-- Section: What is Node.js? -->
 				<section>
-					<section>
-						<h2>What is Node.js?</h2>
-						<p>
-							<blockquote cite="https://nodejs.org/en/">
-								Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
-							</blockquote>
-						</p>
-					</section>
+					<h2>What is Node.js?</h2>
+					<p>
+						<blockquote cite="https://nodejs.org/en/">
+							Node.js® is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient. Node.js' package ecosystem, npm, is the largest ecosystem of open source libraries in the world.
+						</blockquote>
+						<small>Note: V8 compiles Javascript into machine code on the fly</small>
+					</p>
+				</section>
 
-					<section>
-						<h2>What is Node.js?</h2>
-						<h3>Asynchronous and Event Driven</h3>
-						<p>
-							All APIs of Node.js library are asynchronous that is, non-blocking. <strong>There is no sleep on Node</strong>.<br />
-							<img width="50%" src="img/event-loop.png" title="Node processing model" />
-						</p>
-					</section>
+				<section>
+					<h2>What is Node.js?</h2>
+					<h3>Asynchronous and Event Driven</h3>
+					<p>
+						All APIs of Node.js library are asynchronous that is, non-blocking. <strong>There is no sleep on Node</strong>.<br />
+						<img width="50%" src="img/event-loop.png" title="Node processing model" />
+					</p>
+				</section>
 
-					<section>
-						<h2>What is Node.js?</h2>
-						<h3>Very Fast</h3>
-						<p>
-							Being built on Google Chrome's V8 JavaScript Engine, Node.js library is very fast in code execution.<br />
-							<img src="img/nodejs-vs-php-perf.png" alt="Node vs PHP" />
-						</p>
-					</section>
-					<section>
-						<h2>What is Node.js?</h2>
-						<h3>Single Threaded but Highly Scalable</h3>
-						<p>
-							Node.js uses a single threaded model with event looping.<br/>
-							<img src="img/single-thread.png" title="Single thread example" />
-						</p>
-					</section>
+				<section>
+					<h2>What is Node.js?</h2>
+					<h3>Very Fast</h3>
+					<p>
+						Being built on Google Chrome's V8 JavaScript Engine, Node.js library is very fast in code execution.<br />
+						<img src="img/nodejs-vs-php-perf.png" alt="Node vs PHP" />
+					</p>
+				</section>
+				<section>
+					<h2>What is Node.js?</h2>
+					<h3>Single Threaded but Highly Scalable</h3>
+					<p>
+						Node.js uses a single threaded model with event looping.<br/>
+						<img src="img/single-thread.png" title="Single thread example" />
+					</p>
 				</section>
 
 				<section>
@@ -86,8 +85,69 @@
 					<iframe src='//cdn.knightlab.com/libs/timeline3/latest/embed/index.html?source=1rt8Xqpno-s7oNFCEKMYHoJexw24DIUcSkTABx2avcV8&font=Default&lang=en&initial_zoom=2&height=650' width='100%' height='650' frameborder='0'></iframe>
 				</section>
 
+				<!-- Section: Why -->
+				<section>
+					<h2>What else can it do?</h2>
+					<ul>
+						<li>
+							<a target="_blank" href="https://github.com/jashkenas/coffeescript/wiki/List-of-languages-that-compile-to-JS">Javascript will be everywhere: The rise of the transpilers</a>
+						</li>
+						<li>
+							<a target="_blank" href="https://cylonjs.com/">Robots/IoT</a>
+						</li>
+						<li>
+							<a target="_blank" href="http://electron.atom.io/">Electron/NW.js</a>
+						</li>
+						<li>
+							<a target="_blank" href="https://developer.atlassian.com/blog/2015/11/scripting-with-node/">Create your own command line tools</a>
+						</li>
+						<li>
+							<a target="_blank" href="http://www.theguardian.com/technology/blog/2011/nov/09/programming-microsoft">Even Microsoft</a> <a target="_blank" href="https://www.visualstudio.com/features/node-js-vs">is embracing Node.js</a>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Fire up your machines!</h2>
+					<h2><a href="http://bit.ly/nodejs-ws">http://bit.ly/nodejs-ws</a></h2>
+				</section>
+
+				<section>
+					<h2>Before we start: ES6</h2>
+<pre><code class="hljs js" data-trim contenteditable>
+const something = 'my value';
+//We are saying we're not going to assign this variable ever again
+
+let other = 'my value';
+//We can reassign this one, the variable only exists on the current block
+
+//insted of
+var myfunction = function(argument) {
+	//do something;
+	return something;
+}
+//We do
+const myfunction = (argument) => {
+	//do something;
+	return something;
+}
+//If our function only has one line
+//insted of
+var myquickfunction = function(argument) {
+	return console.log(argunment);
+}
+//We do
+const myquickfunction = (argument) => console.log(argument);
+
+//String composition
+//instead of
+var phrase = 'First part ' + secondPart;
+//We do
+let phrase = `First part ${secondPart}`;
+</code></pre>
+				</section>
+
 				<!-- Section: Getting ready -->
-			<section>
 				<section>
 					<h2>Getting ready</h2>
 					<p>
@@ -133,10 +193,8 @@ undefined
 </code></pre>
 					<small>Note: Press cntrl+C to exit the shell</small>
 				</section>
-			</section>
 
-			<!-- Section: Starting up -->
-			<section>
+				<!-- Section: Starting up -->
 				<section>
 					<h2>Starting up</h2>
 					<p>
@@ -184,10 +242,7 @@ $ npm install nodemon --save-dev
 					</p>
 				</section>
 
-			</section>
-
-			<!-- Section: Exercise 1 -->
-			<section>
+				<!-- Section: Exercise 1 -->
 				<section>
 					<h2>Exercise 1: Promises</h2>
 					<blockquote>
@@ -214,6 +269,30 @@ console.log(asyncStuff());
 //null
 </code></pre>
 					<smal>Run it like this: <pre><code class="hljs sh" data-trim contenteditable>node app.js</code></pre></smal>
+				</section>
+
+				<section>
+					<h2>Exercise 1: Promises</h2>
+					<p>
+						We could solve it with callbacks
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//app.js
+'use strict';
+
+const asyncStuff = (callback) => {
+  let value = null;
+  setTimeout(() => {
+    value = `I'm done!`
+    callback(value);
+  }, 100);
+};
+
+asyncStuff((value) => console.log(value));
+</code></pre>
+					<p>
+						But...
+					</p>
 				</section>
 
 				<section>
@@ -302,10 +381,8 @@ asyncStuff()
 //Promise failed [Error: Something went wrong]
 </code></pre>
 				</section>
-			</section>
 
-			<!--- Section: Exercise 2 -->
-			<section>
+				<!--- Section: Exercise 2 -->
 				<section>
 					<h2>Exercise 2: NPM scripts</h2>
 					<p>
@@ -341,10 +418,8 @@ asyncStuff()
 					<small>Learn more about script hooks <a href="http://www.marcusoft.net/2015/08/pre-and-post-hooks-for-npm-scripting.html" target="_blank">here</a></small><br/>
 					<small>Note: One of the most useful hooks is the <strong>postinstall</strong> one.</small>
 				</section>
-			</section>
 
-			<!-- Section: Execise 3 -->
-			<section>
+				<!-- Section: Execise 3 -->
 				<section>
 					<h2>Exercise 3: CommonJS modules</h2>
 					<p>
@@ -392,14 +467,13 @@ console.log(config);
 					<small>Run it with <pre><code class="hljs sh" data-trim contenteditable>node app.js</code></pre></small><br />
 					<small>What happens if you set the env variable? <pre><code class="hljs sh" data-trim contenteditable>export NODE_ENV=production && node app.js</code></pre></small>
 				</section>
-			</section>
 
-			<!-- Section: Let's create a server! -->
-			<section>
+
+				<!-- Section: Let's create a server! -->
 				<section>
 					<h2>Let's create a server!</h2>
 					<p>
-						Creating a server is very easy using Express.
+						Creating a server is super easy using Express.
 					</p>
 <pre><code class="hljs js" data-trim contenteditable>
 //app.js
@@ -447,7 +521,7 @@ app.listen(config.PORT, () => {
 				<section>
 					<h2>Let's create a WEB server!</h2>
 					<p>
-						We'll be using <a href="https://www.npmjs.com/package/ejs" target="_blank">EJS</a> for the view templates, but we could use <a href="https://www.npmjs.com/package/mustache" target="_blank">Moustache</a>, <a href="http://jade-lang.com/" target="_blank">Jade</a>, etc.
+						We'll be using <a href="https://www.npmjs.com/package/ejs" target="_blank">EJS</a> for the view templates, but we could use <a href="https://www.npmjs.com/package/mustache" target="_blank">Moustache</a>, <a href="http://jade-lang.com/" target="_blank">Jade</a>, or any other.
 					</p>
 <pre><code class="hljs sh" data-trim contenteditable>
 $ npm i ejs --save
@@ -511,7 +585,6 @@ views
 &lt;%- include('partials/footer') -%&gt;
 </code></pre>
 				</section>
-			</section>
 
 
 				<section>
@@ -539,9 +612,13 @@ views
 				<section>
 					<h1>Thank you!</h1>
 					<p>
-						Check the repo <a href="https://github.com/martip-sainsburys/nodejs-workshop" target="_blank">https://github.com/martip-sainsburys/nodejs-workshop</a>
-						and PR the README.md file to add the topics you want to have covered!
+						Check out the repo <a href="https://github.com/martip-sainsburys/nodejs-workshop" target="_blank">https://github.com/martip-sainsburys/nodejs-workshop</a>.
+						<br  />
+						What else do you want to learn?
+
+
 					</p>
+					<img width="50%" src="img/topics.png" />
 				</section>
 
 			</div>
