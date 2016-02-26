@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Node.js Workshop - Sainsbury's</title>
+
+		<meta name="description" content="Slides used on the Node.js Workshop">
+		<meta name="author" content="Marti Planellas">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+		<link rel="stylesheet" href="../css/reveal.css">
+		<link rel="stylesheet" href="../css/theme/black.css" id="theme">
+
+		<!-- Code syntax highlighting -->
+		<link rel="stylesheet" href="../lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? '../css/print/pdf.css' : '../css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Node.js Workshop</h1>
+					<h3>Session 2 - 04/03/2016</h3>
+				</section>
+
+				<section>
+					<h2>What is NoSQL?</h2>
+					<p>
+						NoSQL encompasses a wide variety of different database technologies that were developed in response to the demands presented in building modern applications:
+					</p>
+					<ul>
+						<li>
+							Large volumes of rapidly changing structured, semi-structured, and unstructured data
+						</li>
+						<li>
+							Agile sprints, quick schema iteration, and frequent code pushes
+						</li>
+						<li>
+							Object-oriented programming that is easy to use and flexible
+						</li>
+						<li>
+							Geographically distributed scale-out architecture instead of expensive, monolithic architecture
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Scaling a Relational DB</h2>
+					<p>
+						To support more concurrent users and store more data, relational databases require a bigger and more expensive server with more CPUs, memory, and disk storage.
+					</p>
+					<img width="70%" src="img/relational-scalability.png" />
+				</section>
+
+				<section>
+					<h2>Scaling a NoSQL DB</h2>
+					<p>
+						 As the number of concurrent users grows, simply add additional low-cost, commodity servers to your cluster.
+					</p>
+					<img width="70%" src="img/nosql-scalability.png" />
+				</section>
+
+				<section>
+					<h2>Who uses NoSQL?</h2>
+					<p>
+						Some familiar names
+					</p>
+					<ul>
+						<li>
+							<a target="_blank" href="http://hadoop.apache.org/">Hadoop</a> big data, high scalability, Java.
+						</li>
+						<li>
+							<a target="_blank" href="https://www.elastic.co/">Elasticsearch</a> document store, high performance indexing, Java.
+						</li>
+						<li>
+							<a target="_blank" href="https://www.mongodb.org/">MongoDB</a> document store, high scalability, C++.
+						</li>
+						<li>
+							<a target="_blank" href="http://redis.io/">Redis</a> key value store, Erlang.
+						</li>
+						<li>
+							<a target="_blank" href="http://neo4j.com/">Neo4J</a> graph database, JAVA.
+						</li>
+						<li>
+							<a target="_blank" href="http://nosql-database.org/">and so on...</a>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>MongoDB: Documents</h2>
+					<p>
+						MongoDB stores data in the form of documents, which are JSON-like field and value pairs.
+					</p>
+					<img style="background:white" src="img/document.png" />
+				</section>
+
+				<section>
+					<h2>MongoDB: Collections</h2>
+					<p>
+						MongoDB stores all documents in collections.
+					</p>
+					<img style="background:white" src="img/collection.png" />
+				</section>
+
+				<section>
+					<h2>MongoDB: Read Query</h2>
+					<p>
+						In MongoDB a query targets a specific collection of documents. Queries specify criteria, or conditions, that identify the documents.
+					</p>
+					<img style="background:white" src="img/query.png" />
+				</section>
+
+				<section>
+					<h2>MongoDB: Data modification</h2>
+					<p>
+						Data modification refers to operations that create, update, or delete data. In MongoDB, these operations modify the data of a single collection.
+					</p>
+					<img style="background:white" src="img/data-modification.png" />
+				</section>
+
+				<section>
+					<h2>MongoDB: Data modification</h2>
+					<p>
+						Data modification refers to operations that create, update, or delete data. In MongoDB, these operations modify the data of a single collection.
+					</p>
+					<img style="background:white" src="img/update.png" />
+				</section>
+
+				<section>
+					<h2>MongoDB scalability: Replication</h2>
+					<p>
+						A replica set is a group of mongod instances that maintain the same data set.
+					</p>
+					<img style="background:white" src="img/replicaset.png" />
+				</section>
+
+				<section>
+					<h2>MongoDB scalability: Sharding</h2>
+					<p>
+						Sharding is a method for storing data across multiple machines.
+					</p>
+					<img width="50%" style="background:white" src="img/sharding.png" />
+				</section>
+
+				<section>
+					<h2>MongoDB installation</h2>
+					<p>
+						If you're in a Mac and you have <a target="_blank" href="http://brew.sh/">homebrew</a> installed:
+<pre><code class="hljs sh" data-trim contenteditable>
+brew install mongodb
+...
+mongod --config /usr/local/etc/mongod.conf
+</code></pre>
+					</p>
+					<p>
+						Otherwise <a target="_blank" href="https://docs.mongodb.org/manual/installation/">find your installer</a>
+					</p>
+				</section>
+
+				<section>
+					<h2>Mongoose ODM</h2>
+					<p>
+						Mongoose provides a straight-forward, schema-based solution to model your application data. It includes built-in type casting, validation, query building, business logic hooks and more, out of the box.
+					</p>
+<pre><code class="hljs sh" data-trim contenteditable>
+npm i mongoose --save
+npm i body-parser --save
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Mongoose ODM</h2>
+					<p>
+						Connecting to MongoDB
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//app.js
+'use strict';
+
+const config      = require('./config'),
+      express     = require('express'),
+      app         = express(),
+      bodyParser  = require('body-parser'),
+      mongoose    = require('mongoose'),
+      db          = mongoose.connection;
+
+
+mongoose.connect('mongodb://localhost/nws');
+
+db.on('error', (err) => console.error('Connection error: ', err));
+db.once('open', () => console.log('Connected to MongoDB'));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+...
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Creating a new model</h2>
+<pre><code class="hljs js" data-trim contenteditable>
+//models/pr.js
+const mongoose = require('mongoose'),
+      Schema   = mongoose.Schema;
+
+const PRSchema = new Schema({
+  gh_id     : Number,
+  url       : String,
+  state     : String,
+  title     : String,
+  author    : Schema.Types.Mixed,
+  body      : String,
+  created_at: Date,
+  updated_at: Date,
+  closed_at : Date,
+  merged_at : Date,
+  marged    : Boolean,
+  commits   : Number,
+  links     : []
+});
+
+module.exports = mongoose.model('PR', PRSchema);
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Creating our API</h2>
+					<p>
+						Let's refactor our app a little bit:
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+routes
+├── api
+│   ├── index.js
+│   └── pr.js
+└── webserver.js
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Creating our API</h2>
+					<p>
+						Now we can simplify our app.js file
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+'use strict';
+
+const config      = require('./config'),
+      express     = require('express'),
+      app         = express(),
+      bodyParser  = require('body-parser'),
+      mongoose    = require('mongoose'),
+      db          = mongoose.connection,
+      webserver   = require('./routes/webserver'),
+      api         = require('./routes/api');
+
+
+mongoose.connect('mongodb://localhost/nws');
+
+db.on('error', (err) => console.error('Connection error: ', err));
+db.once('open', () => console.log('Connected to MongoDB'));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+app.use(express.static('public'));
+
+app.set('view engine', 'ejs');
+
+app.use('/', webserver());
+app.use('/api', api());
+
+app.listen(config.PORT, () => {
+  console.log(`Server listening on localhost:${config.PORT}`);
+});
+</code></pre>
+			</section>
+
+			<section>
+				<h2>Creating our API</h2>
+				<p>
+					The `routes/webserver.js` holds the same code as before:
+				</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//routes/webserver.js
+'use strict';
+
+const express = require('express'),
+      router  = express.Router();
+
+
+module.exports = () => {
+
+  router.get('/', (req, res, next) => {
+    res.render('index', {message: 'Hello World'});
+  });
+
+  return router;
+};
+</code></pre>
+			</section>
+
+			<section>
+				<h2>Creating our API</h2>
+				<p>
+					The `api/index.js` is going to be the hub for all our API endpoints.
+				</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//routes/api/index.js
+'use strict';
+
+const express = require('express'),
+      router  = express.Router(),
+      pr      = require('./pr');
+
+
+module.exports = () => {
+
+  router.use('/pr', pr());
+
+  return router;
+};
+</code></pre>
+			</section>
+
+			<section>
+				<h2>Creating our API</h2>
+				<p>
+					We want to create a RESTful CRUD API for our PRs.
+					<table>
+						<thead>
+							<tr>
+								<th>Route</th>
+								<th>HTTP Verb</th>
+								<th>Description</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>/api/pr</td>
+								<td>GET</td>
+								<td>Get all PRs</td>
+							</tr>
+							<tr>
+								<td>/api/pr</td>
+								<td>POST</td>
+								<td>Create a PR</td>
+							</tr>
+							<tr>
+								<td>/api/pr/:pr_id</td>
+								<td>GET</td>
+								<td>Get a single PR</td>
+							</tr>
+							<tr>
+								<td>/api/pr/:pr_id</td>
+								<td>PUT</td>
+								<td>Update a single PR</td>
+							</tr>
+							<tr>
+								<td>/api/pr/:pr_id</td>
+								<td>DELETE</td>
+								<td>Delete a single PR</td>
+							</tr>
+						</tbody>
+					</table>
+				</p>
+
+			</section>
+
+			<section>
+				<h2>Creating our API</h2>
+				<p>
+					The  <code>api/pr.js</code> file is going to define all the methods of our API
+				</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//routes/api/pr.js
+'use strict';
+
+const express = require('express'),
+      router  = express.Router(),
+      PR      = require('../../models/pr');
+
+
+module.exports = () => {
+  router
+    .get('/', (req, res, next) => {
+      //Get all PRs
+      PR.find((err, prs) => {
+        if (err) {
+          res.status(500).json({error: err});
+        } else {
+          res.json(prs);
+        }
+      });
+    })
+    .post('/', (req, res, next) => {
+      //Create new PR
+      let pr = new PR(req.body.pr);
+
+      pr.save((err) => {
+        if (err) {
+          res.status(500).json({error: err});
+        } else {
+          res.json({message: 'PR created!'});
+        }
+      });
+    });
+
+  return router;
+};
+</code></pre>
+			</section>
+
+			<section>
+				<h2>Creating our API</h2>
+				<p>
+					Time to test it! We're going to use <a target="_blank" href="https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop?hl=en">Postman</a> to test our API
+				</p>
+				<p>
+					Use this json to test the POST method.
+				</p>
+<pre><code class="hljs json" data-trim contenteditable>
+{"pr":
+    {
+      "gh_id"     : 1234,
+      "url"       : "http://some.url",
+      "state"     : "open",
+      "title"     : "My PR",
+      "author"    : {
+        "login": "martip-sainsburys",
+        "id": 1234
+      },
+      "body"      : "This is the body of the PR",
+      "created_at": "2015-05-05T23:40:27Z",
+      "updated_at": "2015-05-05T23:40:27Z",
+      "closed_at" : null,
+      "merged_at" : null,
+      "marged"    : false,
+      "commits"   : 1,
+      "links"     : []
+    }
+}
+</code></pre>
+			</section>
+
+			<section>
+				<h2>Exercise: Complete the API</h2>
+
+				<p>
+					We have 2 of the 5 endpoints we want, create the remaining 3.
+				</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//hint: you can get url parameters like this
+.get('/:pr_id', (req, res, next) => {
+	let pr_id = req.params.pr_id;
+...
+</code></pre>
+			<small>And maybe check the <a target="_blank" href="http://mongoosejs.com/docs/documents.html">Mongoose docs</a>.</small>
+			</section>
+
+			</div>
+
+		</div>
+
+		<script src="../lib/js/head.min.js"></script>
+		<script src="../js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'convex', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: '../lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '../plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '../plugin/highlight/highlight.js', async: true, callback: function() { hljs.configure({tabReplace: '  '}); hljs.initHighlightingOnLoad(); } },
+					{ src: '../plugin/zoom-js/zoom.js', async: true },
+					{ src: '../plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
