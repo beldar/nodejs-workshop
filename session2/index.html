@@ -41,6 +41,7 @@
 				<section>
 					<h1>Node.js Workshop</h1>
 					<h3>Session 2 - 04/03/2016</h3>
+					<h4><a href="http://bit.ly/nodejs-ws-2">http://bit.ly/nodejs-ws-2</a></h4>
 				</section>
 
 				<section>
@@ -147,6 +148,16 @@
 					<img style="background:white" src="img/update.png" />
 				</section>
 
+
+        <section>
+          <h2>MongoDB: Schema creation</h2>
+          <p>
+            Wait, but what about releationships? Embed. Think about how you use your data.
+          </p>
+          <img style="background:white" src="img/schema.png" />
+					<small>Read more <a target="_blank" href="https://www.mongodb.com/blog/post/thinking-documents-part-1?jmp=docs">about it</a></small>
+        </section>
+
 				<section>
 					<h2>MongoDB scalability: Replication</h2>
 					<p>
@@ -161,6 +172,19 @@
 						Sharding is a method for storing data across multiple machines.
 					</p>
 					<img width="50%" style="background:white" src="img/sharding.png" />
+				</section>
+
+				<section>
+					<h2>Fire up your machines!</h2>
+					<p>
+						If you couldn't attend the Session 1 Workshop and didn't follow the slides, please clone the code from this repo and install the dependencies:
+<pre><code class="hljs sh" data-trim contenteditable>
+git clone https://github.com/martip-sainsburys/nodejs-project.git
+cd nodejs-project
+npm install
+npm start
+</code></pre>
+					</p>
 				</section>
 
 				<section>
@@ -300,7 +324,7 @@ app.listen(config.PORT, () => {
 			<section>
 				<h2>Creating our API</h2>
 				<p>
-					The `routes/webserver.js` holds the same code as before:
+					The <code>routes/webserver.js</code> holds the same code as before:
 				</p>
 <pre><code class="hljs js" data-trim contenteditable>
 //routes/webserver.js
@@ -324,7 +348,7 @@ module.exports = () => {
 			<section>
 				<h2>Creating our API</h2>
 				<p>
-					The `api/index.js` is going to be the hub for all our API endpoints.
+					The <code>api/index.js</code> is going to be the hub for all our API endpoints.
 				</p>
 <pre><code class="hljs js" data-trim contenteditable>
 //routes/api/index.js
@@ -524,6 +548,39 @@ module.exports = () => {
 			<small>And maybe check the <a target="_blank" href="http://mongoosejs.com/docs/documents.html">Mongoose docs</a>.</small>
 			</section>
 
+			<section>
+				<h2>What we learned today</h2>
+				<ul>
+					<li>
+						NoSQL: What is it, what purpose does it serve.
+					</li>
+					<li>
+						MongoDB: What it is, how it works.
+					</li>
+					<li>
+						Mongoose: How to create a model and use it.
+					</li>
+					<li>
+						API Creation: Define api routes and methods for a RESTful API.
+					</li>
+					<li>
+						Postman: How to use Postman to test your APIs
+					</li>
+				</ul>
+			</section>
+
+
+			<section>
+				<h1>Thank you!</h1>
+				<p>
+					Check out the repo <a href="https://github.com/martip-sainsburys/nodejs-workshop" target="_blank">https://github.com/martip-sainsburys/nodejs-workshop</a>.
+					<br  />
+					What else do you want to learn?
+
+
+				</p>
+				<img width="50%" src="img/topics.png" />
+			</section>
 			</div>
 
 		</div>

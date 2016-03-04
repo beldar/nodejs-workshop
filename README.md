@@ -16,14 +16,27 @@ __Contents__
 
 [View Slides](http://martip-sainsburys.github.io/nodejs-workshop/session1)
 
+### Session 2
+
+__Contents___
+
+* NoSQL: What is it, what purpose does it serve.
+* MongoDB: What it is, how it works.
+* Mongoose: How to create a model and use it.
+* API Creation: Define api routes and methods for a RESTful API.
+* Postman: How to use Postman to test your APIs
+
+[View Slides](http://martip-sainsburys.github.io/nodejs-workshop/session2)
 
 ## Topics we want to cover
 
 - [x] Node.js basics
 - [x] Creating a web server
-- [ ] Introduction to MongoDB
-- [ ] Creating models with Mongoose
-- [ ] Routing with Express
-- [ ] Creating an API server
+- [x] Introduction to MongoDB
+- [x] Creating models with Mongoose
+- [x] Routing with Express
+- [x] Creating an API server
 - [ ] Learn how to use Websockets
+- [ ] Create a real-time updating website
 - [ ] Learn how to build and deploy for production
+- [ ] Create your own command line tools
