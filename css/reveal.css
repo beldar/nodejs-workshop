@@ -5,6 +5,9 @@
  *
  * Copyright (C) 2016 Hakim El Hattab, http://hakim.se
  */
+.reveal section img {
+  background: white !important; }
+
 /*********************************************
  * RESET STYLES
  *********************************************/
