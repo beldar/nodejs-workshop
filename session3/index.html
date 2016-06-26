@@ -76,7 +76,7 @@
           <p>
             WebSocket is a protocol providing full-duplex communication channels over a single TCP connection.
           </p>
-          <img width="50%" src="img/connection.png" />
+          <img width="40%" src="img/connection.png" />
         </section>
 
 				<section>
@@ -119,7 +119,110 @@ exampleSocket.onmessage = function (event) {
 
 				<section>
 					<h2>Let's implement it!</h2>
+<pre><code class="hljs sh" data-trim contenteditable>
+npm i socket.io --save
+</code></pre>
+				</section>
 
+				<section>
+					<h2>Hooking into express</h2>
+					<p>
+						Socket.io can hook into express to learn which port to use and to serve its frontend library.
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+const server = app.listen(config.PORT, () => console.log(`Server listening on localhost:${config.PORT}`));
+const io  = require('socket.io')(server);
+</code></pre>
+				</section>
+
+				<section>
+					<h2>Listening for a connection</h2>
+					<p>
+						When a new <code>connection</code> happens the <code>socket</code> variable passed on the handler represents the newly connected user.
+						Any events emitted or received on <code>socket</code> refer only to a single user, on the other hand all events on <code>io</code> are broadcasted to all connected users.
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+io.on('connection', function (socket) {
+	socket.emit('an event', {data: 'some payload'}); //This event is only sent to a singular user
+  socket.on('another event', function(data) {
+		io.emit('broadcast event', data); //This event is sent to everyone (broadcasted)
+	});
+});
+</code></pre>
+				</section>
+
+				<section>
+					<h2>A real example (backend)</h2>
+					<p>
+						Keep track and display the number of connected users.
+					</p>
+<pre><code class="hljs js" data-trim contenteditable>
+let connected = 0;
+
+const updateOnline = () => io.emit('online', { users: connected }); //Broadcast the number of connected users
+
+io.on('connection', function (socket) {
+	//On new connection increment the number of users
+  connected++;
+  updateOnline();
+
+  socket.on('disconnect', function() {
+		//On disconnect decrement the number of users
+    connected--;
+    updateOnline();
+  });
+});
+</code></pre>
+				</section>
+
+				<section>
+					<h2>A real example (frontend)</h2>
+					<p>
+						First of all, we need to include the frontend library.<br />
+						We'll also add some HTML to display the information.
+					</p>
+<pre><code class="hljs html" data-trim contenteditable>
+<!-- views/index.ejs -->
+<h1>Online users: <span id="online"></span></h1>
+<script src="/socket.io/socket.io.js"></script>
+</code></pre>
+				</section>
+
+				<section>
+					<h2>A real example (frontend)</h2>
+<p>
+	Then we can connect to the server and we're ready to listen and send events.
+</p>
+<pre><code class="hljs js" data-trim contenteditable>
+//public/js/main.js
+var App = {
+  init: function() {
+    this.onlineEl = document.getElementById('online');
+    this.socket = io.connect('http://localhost:9090');
+
+    this.subEvents();
+  },
+
+  subEvents: function() {
+    var that = this;
+
+    this.socket.on('online', function (data) {
+      that.onlineEl.innerHTML = data.users;
+    });
+  }
+};
+App.init();
+</code></pre>
+<small>Note: We don't have ES6 on the frontend for now</small>
+				</section>
+
+				<section>
+					<h1>Exercise 1: The click counter</h1>
+					<p>
+						Using what we just learned create the code to keep track how many clicks
+						in total a <code>&lt;button&gt;</code> receives, this should be in sync on all connected
+						clients.
+					</p>
 				</section>
 
 				<section>

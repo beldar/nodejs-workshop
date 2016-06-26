@@ -36,7 +36,7 @@ __Contents___
 - [x] Creating models with Mongoose
 - [x] Routing with Express
 - [x] Creating an API server
-- [ ] Learn how to use Websockets
-- [ ] Create a real-time updating website
+- [x] Learn how to use Websockets
+- [x] Create a real-time updating website
 - [ ] Learn how to build and deploy for production
 - [ ] Create your own command line tools
