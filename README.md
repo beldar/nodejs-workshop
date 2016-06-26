@@ -30,6 +30,8 @@ __Contents__
 
 ### Session 3
 
+__Contents__
+
 * Websockets: What they are, where they come from
 * Socket.io: How to implement it
 * Meteor: What it is, when and how to use it.
