@@ -18,7 +18,7 @@ __Contents__
 
 ### Session 2
 
-__Contents___
+__Contents__
 
 * NoSQL: What is it, what purpose does it serve.
 * MongoDB: What it is, how it works.
@@ -27,6 +27,14 @@ __Contents___
 * Postman: How to use Postman to test your APIs
 
 [View Slides](http://martip-sainsburys.github.io/nodejs-workshop/session2)
+
+### Session 3
+
+* Websockets: What they are, where they come from
+* Socket.io: How to implement it
+* Meteor: What it is, when and how to use it.
+
+[View Slides](http://martip-sainsburys.github.io/nodejs-workshop/session3)
 
 ## Topics we want to cover
 
