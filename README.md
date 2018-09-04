@@ -14,7 +14,7 @@ __Contents__
 * CommonJS: How to define modules.
 * Express: How to create a web server and render with EJS.
 
-[View Slides](http://martip-sainsburys.github.io/nodejs-workshop/session1)
+[View Slides](http://beldar.github.io/nodejs-workshop/session1)
 
 ### Session 2
 
@@ -26,7 +26,7 @@ __Contents__
 * API Creation: Define api routes and methods for a RESTful API.
 * Postman: How to use Postman to test your APIs
 
-[View Slides](http://martip-sainsburys.github.io/nodejs-workshop/session2)
+[View Slides](http://beldar.github.io/nodejs-workshop/session2)
 
 ### Session 3
 
@@ -36,7 +36,7 @@ __Contents__
 * Socket.io: How to implement it
 * Meteor: What it is, when and how to use it.
 
-[View Slides](http://martip-sainsburys.github.io/nodejs-workshop/session3)
+[View Slides](http://beldar.github.io/nodejs-workshop/session3)
 
 ## Topics we want to cover
 
